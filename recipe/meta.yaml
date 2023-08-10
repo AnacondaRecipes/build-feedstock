@@ -1,5 +1,5 @@
-{% set version = "0.7.0" %}
-{% set sha256 = "1aaadcd69338252ade4f7ec1265e1a19184bf916d84c9b7df095f423948cb89f" %}
+{% set version = "0.10.0" %}
+{% set sha256 = "d5b71264afdb5951d6704482aac78de887c80691c52b88a9ad195983ca2c9269" %}
 
 package:
   name: build
@@ -20,6 +20,7 @@ requirements:
   host:
     - python >=3.6
     - pip
+    - wheel
   run:
     - python >=3.6
     - packaging
@@ -32,6 +33,10 @@ test:
     - build
     - build.__main__
     - build.env
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/pypa/build
