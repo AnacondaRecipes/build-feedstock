@@ -10,23 +10,22 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - pyproject-build = build.__main__:entrypoint
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
     - wheel
   run:
-    - python >=3.6
-    - packaging
-    - pep517 >=0.9.1
-    - tomli
-    - importlib-metadata
+    - python
+    - packaging >=19.0
+    - pyproject_hooks
+    - importlib-metadata >=0.22  # [py<38]
+    - tomli >=1.1.0  # [py<311]
 
 test:
   imports:
@@ -45,12 +44,14 @@ about:
   license_file: LICENSE
   summary: A simple, correct PEP517 package builder
   description: |
-    build is a simple, correct PEP517 package builder. Use with 'python -m build'. This will build the package in an isolated environment, generating a source-distribution and wheel in the directory dist/.
-  doc_url: https://pypa-build.readthedocs.io/en/latest/
+    build is a simple, correct PEP517 package builder. Use with 'python -m build'. This will build the package in an
+    isolated environment, generating a source-distribution and wheel in the directory dist/.
+  doc_url: https://pypa-build.readthedocs.io
   dev_url: https://github.com/pypa/build
 
 extra:
   recipe-maintainers:
-    - jasongrout
     - FFY00
     - gaborbernat
+    - layday
+    - henryiii
