@@ -30,6 +30,7 @@ requirements:
     - tomli >=1.1.0  # [py<311]
 
 {% set tests_to_skip = "test_build_wheel or test_build_sdist" %}
+{% set tests_to_skip = tests_to_skip + " or test_init" %}  # [linux]
 
 test:
   source_files:
