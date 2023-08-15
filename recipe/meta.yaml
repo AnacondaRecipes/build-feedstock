@@ -16,7 +16,7 @@ build:
 
 requirements:
   build:
-    - git
+    - git  # [not win]
   host:
     - python
     - pip
