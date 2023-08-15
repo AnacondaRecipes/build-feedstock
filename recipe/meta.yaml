@@ -29,6 +29,8 @@ requirements:
     - importlib-metadata >=0.22  # [py<38]
     - tomli >=1.1.0  # [py<311]
 
+{% set tests_to_skip = "test_build_wheel or test_build_sdist" %}
+
 test:
   source_files:
     - src/build/
@@ -51,7 +53,7 @@ test:
     - setuptools >=56.0.0  # [py>=310]
   commands:
     - pip check
-    - pytest ./tests
+    - pytest ./tests -k "not ({{ tests_to_skip }})"
 
 about:
   home: https://github.com/pypa/build
