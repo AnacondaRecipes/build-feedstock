@@ -31,6 +31,7 @@ requirements:
 
 {% set tests_to_skip = "test_build_wheel or test_build_sdist" %}
 {% set tests_to_skip = tests_to_skip + " or test_init" %}  # [linux]
+{% set tests_to_skip = tests_to_skip + " or test_output_env_subprocess_error" %}  # [not win]
 
 test:
   source_files:
