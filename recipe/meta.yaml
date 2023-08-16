@@ -5,8 +5,9 @@ package:
   version: {{ version }}
 
 source:
-  git_url: https://github.com/pypa/build
-  git_rev: {{ version }}
+  # using gh tarball because pypi tarball is missing tests directory
+  url: https://github.com/pypa/build/archive/refs/tags/0.10.0.tar.gz
+  sha256: 0cbeebaa6047cf8bfc82451038479e41d6cf1e196126a8a110991b1173b39390
 
 build:
   number: 0
