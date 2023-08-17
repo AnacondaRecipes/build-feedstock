@@ -29,15 +29,21 @@ requirements:
     - importlib-metadata >=0.22  # [py<38]
     - tomli >=1.1.0  # [py<311]
 
-{% set tests_to_skip = "test_build_wheel or test_build_sdist" %}
-# the test runs fine except for a permission issue that seems to occur on linux only
+# while testing lack of permission, 'build.BuildException: Permission denied' is not raised on linux archs
+# doesn't seem like a critical issue to skip it
 {% set tests_to_skip = tests_to_skip + " or test_init" %}  # [linux]
-# hard to investigate the origin of this issue, it also only appears on win-64
+# hard to investigate the origin of this issue, seems to be terminal session (color coding related), it also only
+# appears on win-64
 {% set tests_to_skip = tests_to_skip + " or test_output_env_subprocess_error" %}  # [not win]
 
 test:
   source_files:
     - tests/
+    # from here on thes files are needed for test_self_packaging
+    - src/
+    - pyproject.toml
+    - LICENSE
+    - README.md
   imports:
     - build
     - build.__main__
