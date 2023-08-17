@@ -29,7 +29,7 @@ requirements:
     - importlib-metadata >=0.22  # [py<38]
     - tomli >=1.1.0  # [py<311]
 
-{% set tests_to_skip = "" %}
+{% set tests_to_skip = "_not_a_real_test" %}
 # while testing lack of permission, 'build.BuildException: Permission denied' is not raised on linux archs
 # doesn't seem like a critical issue to skip it
 {% set tests_to_skip = "test_init" %}  # [linux]
