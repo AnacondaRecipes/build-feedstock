@@ -37,7 +37,6 @@ requirements:
 
 test:
   source_files:
-    - src/build/
     - tests/
   imports:
     - build
