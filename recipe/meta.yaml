@@ -10,7 +10,7 @@ source:
   sha256: 0cbeebaa6047cf8bfc82451038479e41d6cf1e196126a8a110991b1173b39390
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - pyproject-build = build.__main__:entrypoint
@@ -21,7 +21,7 @@ requirements:
   host:
     - python
     - pip
-    - flit-core 3.8.0
+    - flit-core 3
   run:
     - python
     - packaging >=19.0
